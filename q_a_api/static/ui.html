@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- <script src="form.js"></script>  load our javascript file -->
+</head>
+<body>
+
+<div class="container">
+  <h2>Question and Answer Model Demo</h2>
+  <p>The form below contains two input elements; one for Document and one for Question</p>
+  <form id="request-form" role="form">
+    <div class="form-group">
+      <label for="document">Document:</label>
+      <br/>
+      <textarea name="document" id="document" rows="12" cols="100" wrap="soft"> </textarea>
+      <!-- <input type="text" style="height:300px" class="form-control" id="document" name="document"> -->
+    </div>
+    <div class="form-group">
+      <label for="question">Question:</label>
+      <input type="text" class="form-control" id="question" name="question">
+    </div>
+
+    <div class="form-group">
+      <p>Answer: <span id ='answer'></span></p>
+    </div>
+
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<script>
+    
+    const contactForm = document.getElementById("request-form");
+
+    contactForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+    $("#answer").text("")
+    var request = new XMLHttpRequest();
+    var url = "/predict";
+    
+    request.open("POST", url, true);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            var jsonData = JSON.parse(request.response);
+            console.log(jsonData);
+            $("#answer").text(jsonData['Answer'])
+        }
+    };
+    var doc =  document.getElementById("document").value;
+    var question = document.getElementById("question").value;
+    
+
+    var data = JSON.stringify({"document": doc, "question": question});
+
+
+    request.send(data);
+
+
+
+});  
+
+
+</script>
+
+</body>
+</html>
