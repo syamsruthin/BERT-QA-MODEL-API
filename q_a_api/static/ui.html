@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Bert Q&A</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -10,25 +10,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <!-- <script src="form.js"></script>  load our javascript file -->
 </head>
-<body>
+<body style="background-color:powderblue">
 
-<div class="container">
+<div class="container" style="text-align:center;">
   <h2>Question and Answer Model Demo</h2>
-  <p>The form below contains two input elements; one for Document and one for Question</p>
+  
   <form id="request-form" role="form">
-    <div class="form-group">
-      <label for="document">Document:</label>
+    <div class="form-group" style="padding-top:40px;">
+      <label for="document">Document</label>
+      
       <br/>
-      <textarea name="document" id="document" rows="12" cols="100" wrap="soft"> </textarea>
+      <textarea name="document" id="document" rows="12" cols="150" wrap="soft"> </textarea>
       <!-- <input type="text" style="height:300px" class="form-control" id="document" name="document"> -->
     </div>
-    <div class="form-group">
-      <label for="question">Question:</label>
-      <input type="text" class="form-control" id="question" name="question">
+    <div class="form-group" style="padding-top:20px;">
+      <label for="question">Question</label>
+      
+      <input type="text" class="form-control" id="question" name="question" >
     </div>
 
-    <div class="form-group">
-      <p>Answer: <span id ='answer'></span></p>
+    <div class="form-group" style="padding-top:20px;">
+      <p> Answer:  <span id ='answer'></span></p>
+
     </div>
 
     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
